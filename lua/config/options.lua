@@ -1,3 +1,105 @@
--- Options are automatically loaded before lazy.nvim startup
--- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
--- Add any additional options here
+-- Устанавливает "leader" клавишу как пробел
+vim.g.mapleader = " "
+
+-- Устанавливает кодировку для интерфейса Neovim и для файлов как "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+
+-- Включает отображение номеров строк в редакторе
+vim.opt.number = true
+
+-- Включает отображение заголовка окна в заголовке терминала
+vim.opt.title = true
+
+-- Включает автоматический отступ при создании новой строки
+vim.opt.autoindent = true
+
+-- Включает умное выравнивание, которое делает отступы при помощи смещения, совместимого с предшествующим контекстом
+vim.opt.smartindent = true
+
+-- Включает подсветку найденного текста при поиске
+vim.opt.hlsearch = true
+
+-- Отключает создание резервных копий файлов
+vim.opt.backup = false
+
+-- Включает отображение последней введенной команды в строке статуса
+vim.opt.showcmd = true
+
+-- Устанавливает высоту строки команд на 1
+vim.opt.cmdheight = 1
+
+-- Устанавливает статусную строку всегда видимой (режим 3)
+vim.opt.laststatus = 3
+
+-- Преобразует табуляции в пробелы
+vim.opt.expandtab = true
+
+-- Оставляет 10 строк прокрутки выше и ниже курсора
+vim.opt.scrolloff = 10
+
+-- Устанавливает оболочку для команд в Neovim на Fish Shell
+vim.opt.shell = "fish"
+
+-- Исключает определенные временные каталоги из создания резервных копий
+vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
+
+-- Включает отображение результатов команды "inccommand" в окне сплит
+vim.opt.inccommand = "split"
+
+-- Игнорирует регистр букв при поиске
+vim.opt.ignorecase = true -- Поиск без учета регистра, если только в запросе нет заглавных букв
+
+-- Включает умные табуляции (количество пробелов для отступа соответствует предыдущему отступу)
+vim.opt.smarttab = true
+
+-- Включает сохранение отступа при разрыве строки
+vim.opt.breakindent = true
+
+-- Устанавливает количество пробелов для каждого отступа
+vim.opt.shiftwidth = 2
+
+-- Устанавливает количество пробелов, которые используются при нажатии клавиши табуляции
+vim.opt.tabstop = 2
+
+-- Отключает перенос строк
+vim.opt.wrap = false -- Не переносить строки
+
+-- Устанавливает поведение клавиши Backspace: удаление символов от начала строки, конца строки и отступов
+vim.opt.backspace = { "start", "eol", "indent" }
+
+-- Добавляет текущий и вложенные каталоги к пути поиска файлов
+vim.opt.path:append({ "**" })
+
+-- Исключает папки "node_modules" из автодополнения и поиска
+vim.opt.wildignore:append({ "*/node_modules/*" })
+
+-- Открывает новые окна внизу текущего
+vim.opt.splitbelow = true
+
+-- Открывает новые окна справа от текущего
+vim.opt.splitright = true
+
+-- Оставляет курсор на месте при разделении окна
+vim.opt.splitkeep = "cursor"
+
+-- Отключает использование мыши в Neovim
+vim.opt.mouse = ""
+
+-- Включает поддержку подчеркивания (undercurl) в терминале
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+-- Добавляет символы звездочки в комментарии блоков при автоматическом форматировании
+vim.opt.formatoptions:append({ "r" })
+
+-- Устанавливает синтаксис для файлов с расширением .astro как "astro"
+vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
+
+-- Устанавливает синтаксис для файлов с именем Podfile как "ruby"
+vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
+
+-- Если установлена версия Neovim 0.8 или выше, то устанавливается высота строки команд на 0
+if vim.fn.has("nvim-0.8") == 1 then
+	vim.opt.cmdheight = 0
+end
